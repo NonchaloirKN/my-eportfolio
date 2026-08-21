@@ -1,0 +1,6 @@
+* text=auto
+*.glb -filter -merge -diff -text
+*.wasm -filter -merge -diff -text
+*.hdr -filter -merge -diff -text
+*.pdf -filter -merge -diff -text
+*.webm -filter -merge -diff -text

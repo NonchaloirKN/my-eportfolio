@@ -1,37 +1,31 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./styles/Loading.css";
 import { useLoading } from "../context/LoadingProvider";
-
+import { config } from "../config";
 import Marquee from "react-fast-marquee";
 
 const Loading = ({ percent }: { percent: number }) => {
   const { setIsLoading } = useLoading();
   const [loaded, setLoaded] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [clicked, setClicked] = useState(false);
-
-  if (percent >= 100) {
-    setTimeout(() => {
-      setLoaded(true);
-      setTimeout(() => {
-        setIsLoaded(true);
-      }, 1000);
-    }, 600);
-  }
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const hasTriggeredRef = useRef(false);
 
   useEffect(() => {
-    import("./utils/initialFX").then((module) => {
-      if (isLoaded) {
-        setClicked(true);
+    if (percent >= 100 && !hasTriggeredRef.current) {
+      hasTriggeredRef.current = true;
+      setLoaded(true);
+
+      // Display "Welcome to My ePortfolio" for 600ms, then start the smooth 1000ms CSS fade-out
+      setTimeout(() => {
+        setIsTransitioning(true);
+
+        // Unmount loader component ONLY after the 1000ms CSS fade completes
         setTimeout(() => {
-          if (module.initialFX) {
-            module.initialFX();
-          }
           setIsLoading(false);
-        }, 900);
-      }
-    });
-  }, [isLoaded]);
+        }, 1000);
+      }, 600);
+    }
+  }, [percent, setIsLoading]);
 
   function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
     const { currentTarget: target } = e;
@@ -44,11 +38,13 @@ const Loading = ({ percent }: { percent: number }) => {
 
   return (
     <>
-      <div className="loading-header">
+      <div className={`loading-header ${isTransitioning ? "loading-header-fade" : ""}`}>
         <a href="/#" className="loader-title" data-cursor="disable">
-          RedoyanulHaque
+          <span className="loader-kn-badge">KN</span>
+          <span className="loader-name">{config.developer.fullName}</span>
+          <span className="loader-badge">BSc(Eng) ECE</span>
         </a>
-        <div className={`loaderGame ${clicked && "loader-out"}`}>
+        <div className={`loaderGame ${isTransitioning ? "loader-out" : ""}`}>
           <div className="loaderGame-container">
             <div className="loaderGame-in">
               {[...Array(27)].map((_, index) => (
@@ -59,30 +55,29 @@ const Loading = ({ percent }: { percent: number }) => {
           </div>
         </div>
       </div>
-      <div className="loading-screen">
+      <div className={`loading-screen ${isTransitioning ? "fade-out" : ""}`}>
         <div className="loading-marquee">
           <Marquee>
-            <span>&nbsp; AI Engineer &nbsp;</span> <span>&nbsp; Full Stack Developer &nbsp;</span>
-            <span>&nbsp; AI Engineer &nbsp;</span> <span>&nbsp; Full Stack Developer &nbsp;</span>
+            <span>&nbsp; Embedded Systems &nbsp;</span> <span>&nbsp; Edge AI &amp; Machine Learning &nbsp;</span>
+            <span>&nbsp; Electrical &amp; Computer Engineering &nbsp;</span> <span>&nbsp; University of Cape Town &nbsp;</span>
           </Marquee>
         </div>
         <div
-          className={`loading-wrap ${clicked && "loading-clicked"}`}
+          className={`loading-wrap ${isTransitioning ? "loading-clicked" : ""}`}
           onMouseMove={(e) => handleMouseMove(e)}
         >
           <div className="loading-hover"></div>
-          <div className={`loading-button ${loaded && "loading-complete"}`}>
-            <div className="loading-container">
-              <div className="loading-content">
-                <div className="loading-content-in">
-                  Loading <span>{percent}%</span>
-                </div>
+          <div className={`loading-button ${loaded ? "loading-complete" : ""}`}>
+            {!loaded ? (
+              <div className="loading-single-text">
+                Entering My ePortfolio <span className="loading-pct-val">{percent}%</span>
+                <span className="loading-blink-box"></span>
               </div>
-              <div className="loading-box"></div>
-            </div>
-            <div className="loading-content2">
-              <span>Welcome</span>
-            </div>
+            ) : (
+              <div className="loading-enter-text">
+                <span>Welcome to My ePortfolio</span>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -126,7 +121,6 @@ export const setProgress = (setLoading: (value: number) => void) => {
           setLoading(percent);
         } else {
           resolve(percent);
-          clearInterval(interval);
         }
       }, 2);
     });

@@ -1,8 +1,9 @@
 import {
   createContext,
   PropsWithChildren,
+  useCallback,
   useContext,
-  useEffect,
+  useMemo,
   useState,
 } from "react";
 import Loading from "../components/Loading";
@@ -18,35 +19,32 @@ export const LoadingContext = createContext<LoadingType | null>(null);
 export const LoadingProvider = ({ children }: PropsWithChildren) => {
   const [isLoading, setIsLoading] = useState(() => {
     // Skip loading on mobile
-    if (window.innerWidth <= 768) return false;
+    if (typeof window !== "undefined" && window.innerWidth <= 768) return false;
     return true;
   });
   const [loading, setLoading] = useState(0);
 
-  const value = {
-    isLoading,
-    setIsLoading,
-    setLoading,
-  };
-  useEffect(() => {
-    // Auto-start animations on mobile since there's no 3D model
-    if (window.innerWidth <= 768) {
-      import("../components/utils/initialFX").then((module) => {
-        if (module.initialFX) {
-          setTimeout(() => {
-            module.initialFX();
-          }, 100);
-        }
-      });
-    }
+  const handleSetIsLoading = useCallback((state: boolean) => {
+    setIsLoading(state);
   }, []);
 
-  useEffect(() => {}, [loading]);
+  const handleSetLoading = useCallback((percent: number) => {
+    setLoading(percent);
+  }, []);
+
+  const value = useMemo(
+    () => ({
+      isLoading,
+      setIsLoading: handleSetIsLoading,
+      setLoading: handleSetLoading,
+    }),
+    [isLoading, handleSetIsLoading, handleSetLoading]
+  );
 
   return (
-    <LoadingContext.Provider value={value as LoadingType}>
+    <LoadingContext.Provider value={value}>
       {isLoading && <Loading percent={loading} />}
-      <main className="main-body">{children}</main>
+      {children}
     </LoadingContext.Provider>
   );
 };

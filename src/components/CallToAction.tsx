@@ -1,24 +1,25 @@
 import { Link } from "react-router-dom";
 import { config } from "../config";
+import { MdEmail, MdGamepad } from "react-icons/md";
 import "./styles/CallToAction.css";
 
 const CallToAction = () => {
   return (
     <div className="cta-section">
       <div className="cta-buttons">
-        <Link to="/play" className="cta-btn cta-btn-play" data-cursor="disable">
-          Play With Me →
-        </Link>
-        
-        <a 
-          href={config.contact.linkedin} 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="cta-btn cta-btn-hire"
+        <a
+          href={`mailto:${config.contact.email}`}
+          className="cta-btn cta-btn-primary"
           data-cursor="disable"
         >
-          Hire Me →
+          <MdEmail className="cta-btn-icon" />
+          Get in Touch &rarr;
         </a>
+
+        <Link to="/play" className="cta-btn cta-btn-play" data-cursor="disable">
+          <MdGamepad className="cta-btn-icon" />
+          AI Chess Arena &rarr;
+        </Link>
       </div>
     </div>
   );

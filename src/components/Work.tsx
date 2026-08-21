@@ -59,10 +59,10 @@ const Work = () => {
     };
   }, []);
   return (
-    <div className="work-section" id="work">
+    <div className="work-section" id="projects">
       <div className="work-container section-container">
         <h2>
-          My <span>Work</span>
+          Featured <span>Projects</span>
         </h2>
         <div className="work-flex">
           {config.projects.slice(0, 5).map((project, index) => (
@@ -76,7 +76,7 @@ const Work = () => {
                     <p>{project.category}</p>
                   </div>
                 </div>
-                <h4>Tools and features</h4>
+                <h4>Tools &amp; Implementation</h4>
                 <p>{project.technologies}</p>
               </div>
               <WorkImage image={project.image} alt={project.title} link={project.link} />
@@ -85,10 +85,10 @@ const Work = () => {
           {/* See All Works Button */}
           <div className="work-box work-box-cta">
             <div className="see-all-works">
-              <h3>Want to see more?</h3>
-              <p>Explore all of my projects and creations</p>
+              <h3>Explore More Engineering</h3>
+              <p>Explore full repository code, schematics, and embedded demos</p>
               <Link to="/myworks" className="see-all-btn" data-cursor="disable">
-                See All Works →
+                All Projects &rarr;
               </Link>
             </div>
           </div>

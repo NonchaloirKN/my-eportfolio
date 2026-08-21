@@ -1,11 +1,18 @@
 import * as THREE from "three";
-import { RGBELoader } from "three-stdlib";
 import { gsap } from "gsap";
 
 const setLighting = (scene: THREE.Scene) => {
-  const directionalLight = new THREE.DirectionalLight(0xc7a9ff, 0);
-  directionalLight.intensity = 0;
-  directionalLight.position.set(-0.47, -0.32, -1);
+  // Soft, balanced ambient lighting (cool neutral white)
+  const ambientLight = new THREE.AmbientLight(0xdff4ff, 0.45);
+  scene.add(ambientLight);
+
+  // Subtle hemisphere lighting: Electric Cyan sky / Deep Navy ground (No pink/purple)
+  const hemiLight = new THREE.HemisphereLight(0x00e5ff, 0x061325, 0.5);
+  scene.add(hemiLight);
+
+  // Key directional light (soft natural white)
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.75);
+  directionalLight.position.set(0, 6, 8);
   directionalLight.castShadow = true;
   directionalLight.shadow.mapSize.width = 1024;
   directionalLight.shadow.mapSize.height = 1024;
@@ -13,37 +20,35 @@ const setLighting = (scene: THREE.Scene) => {
   directionalLight.shadow.camera.far = 50;
   scene.add(directionalLight);
 
-  const pointLight = new THREE.PointLight(0xc2a4ff, 0, 100, 3);
+  // Subtle electric cyan rim backlight
+  const rimLight = new THREE.DirectionalLight(0x00e5ff, 0.4);
+  rimLight.position.set(-3, 2, -4);
+  scene.add(rimLight);
+
+  // Subtle laptop/screen fill light
+  const pointLight = new THREE.PointLight(0x00e5ff, 0.5, 30, 2);
   pointLight.position.set(3, 12, 4);
   pointLight.castShadow = true;
   scene.add(pointLight);
 
-  new RGBELoader()
-    .setPath("/models/")
-    .load("char_enviorment.hdr", function (texture) {
-      texture.mapping = THREE.EquirectangularReflectionMapping;
-      scene.environment = texture;
-      scene.environmentIntensity = 0;
-      scene.environmentRotation.set(5.76, 85.85, 1);
-    });
-
-  function setPointLight(screenLight: any) {
-    if (screenLight.material.opacity > 0.9) {
-      pointLight.intensity = screenLight.material.emissiveIntensity * 20;
+  function setPointLight(screenLight: THREE.Object3D | null) {
+    if (screenLight && (screenLight as THREE.Mesh).material) {
+      const mat = (screenLight as THREE.Mesh).material as THREE.MeshStandardMaterial;
+      if (mat.opacity > 0.9) {
+        pointLight.intensity = mat.emissiveIntensity * 10;
+      } else {
+        pointLight.intensity = 0.5;
+      }
     } else {
-      pointLight.intensity = 0;
+      pointLight.intensity = 0.5;
     }
   }
+
   const duration = 2;
   const ease = "power2.inOut";
   function turnOnLights() {
-    gsap.to(scene, {
-      environmentIntensity: 0.64,
-      duration: duration,
-      ease: ease,
-    });
     gsap.to(directionalLight, {
-      intensity: 1,
+      intensity: 0.85,
       duration: duration,
       ease: ease,
     });

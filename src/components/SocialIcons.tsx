@@ -1,93 +1,65 @@
-import {
-  FaGithub,
-  FaInstagram,
-  FaLinkedinIn,
-  FaXTwitter,
-} from "react-icons/fa6";
-import "./styles/SocialIcons.css";
-import { TbNotes } from "react-icons/tb";
-import { useEffect } from "react";
-import HoverLinks from "./HoverLinks";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
+import { TbFileCv } from "react-icons/tb";
 import { config } from "../config";
+import "./styles/SocialIcons.css";
 
 const SocialIcons = () => {
-  useEffect(() => {
-    const social = document.getElementById("social") as HTMLElement;
-
-    social.querySelectorAll("span").forEach((item) => {
-      const elem = item as HTMLElement;
-      const link = elem.querySelector("a") as HTMLElement;
-
-      const rect = elem.getBoundingClientRect();
-      let mouseX = rect.width / 2;
-      let mouseY = rect.height / 2;
-      let currentX = 0;
-      let currentY = 0;
-
-      const updatePosition = () => {
-        currentX += (mouseX - currentX) * 0.1;
-        currentY += (mouseY - currentY) * 0.1;
-
-        link.style.setProperty("--siLeft", `${currentX}px`);
-        link.style.setProperty("--siTop", `${currentY}px`);
-
-        requestAnimationFrame(updatePosition);
-      };
-
-      const onMouseMove = (e: MouseEvent) => {
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        if (x < 40 && x > 10 && y < 40 && y > 5) {
-          mouseX = x;
-          mouseY = y;
-        } else {
-          mouseX = rect.width / 2;
-          mouseY = rect.height / 2;
-        }
-      };
-
-      document.addEventListener("mousemove", onMouseMove);
-
-      updatePosition();
-
-      return () => {
-        elem.removeEventListener("mousemove", onMouseMove);
-      };
-    });
-  }, []);
-
   return (
-    <div className="icons-section">
-      <div className="social-icons" data-cursor="icons" id="social">
-        <span>
-          <a href={config.contact.github} target="_blank" rel="noopener noreferrer">
-            <FaGithub />
-          </a>
-        </span>
-        <span>
-          <a href={config.contact.linkedin} target="_blank" rel="noopener noreferrer">
-            <FaLinkedinIn />
-          </a>
-        </span>
-        <span>
-          <a href={config.contact.twitter} target="_blank" rel="noopener noreferrer">
-            <FaXTwitter />
-          </a>
-        </span>
-        <span>
-          <a href={config.contact.instagram} target="_blank" rel="noopener noreferrer">
-            <FaInstagram />
-          </a>
-        </span>
+    <>
+      {/* Fixed Social Links (Bottom Left) */}
+      <div className="fixed-social-bottom-left" aria-label="Social Links">
+        <a
+          href={config.contact.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="GitHub Profile (@NonchaloirKN)"
+          aria-label="GitHub Profile"
+          className="fixed-social-icon"
+          data-cursor="disable"
+        >
+          <FaGithub />
+        </a>
+
+        <a
+          href={config.contact.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="LinkedIn Profile (Kiyuran Naidoo)"
+          aria-label="LinkedIn Profile"
+          className="fixed-social-icon"
+          data-cursor="disable"
+        >
+          <FaLinkedinIn />
+        </a>
+
+        <a
+          href={`mailto:${config.contact.email}`}
+          title="Direct Email (kiyuran.naidoo@gmail.com)"
+          aria-label="Send Email"
+          className="fixed-social-icon"
+          data-cursor="disable"
+        >
+          <MdEmail />
+        </a>
       </div>
-      <a className="resume-button" href="#">
-        <HoverLinks text="RESUME" />
-        <span>
-          <TbNotes />
-        </span>
-      </a>
-    </div>
+
+      {/* Single Fixed Resume Button (Bottom Right) */}
+      <div className="fixed-resume-bottom-right">
+        <a
+          className="global-resume-btn"
+          href={config.developer.cvUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          download
+          title="Download Kiyuran Naidoo - CV 2026.pdf"
+          data-cursor="disable"
+        >
+          <TbFileCv className="resume-icon" />
+          <span>Resume (CV)</span>
+        </a>
+      </div>
+    </>
   );
 };
 

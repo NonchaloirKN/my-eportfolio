@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { config } from "../config";
+import { TbBrandGithub } from "react-icons/tb";
+import { MdArrowOutward } from "react-icons/md";
 import "./MyWorks.css";
 
 const MyWorks = () => {
@@ -7,58 +9,46 @@ const MyWorks = () => {
     <div className="myworks-page">
       <div className="myworks-header">
         <Link to="/" className="back-button" data-cursor="disable">
-          ← Back to Home
+          &larr; Back to Home
         </Link>
         <h1>
-          All <span>Works</span>
+          Engineering <span>Projects</span>
         </h1>
-        <p>A collection of all my projects and creations</p>
+        <p>A curated collection of verified hardware architectures, edge AI pipelines, and software systems.</p>
       </div>
 
       <div className="myworks-grid">
-        {config.projects.map((project, index) => {
-          const isInternalLink = Boolean(project.link?.startsWith("/"));
-          const cardContent = (
-            <>
-              <div className="myworks-card-number">0{index + 1}</div>
-              <div className="myworks-card-image">
-                <img src={project.image} alt={project.title} loading="lazy" decoding="async" />
+        {config.projects.map((project, index) => (
+          <div className="myworks-card" key={project.id}>
+            <div className="myworks-card-number">0{index + 1}</div>
+            <div className="myworks-card-info">
+              <span className="myworks-card-category">{project.category}</span>
+              <h3>{project.title}</h3>
+              <p className="myworks-card-description">{project.description}</p>
+              <div className="myworks-card-tech-pills">
+                {project.technologies.split(", ").map((tech, tIdx) => (
+                  <span key={tIdx} className="myworks-tech-pill">
+                    {tech}
+                  </span>
+                ))}
               </div>
-              <div className="myworks-card-info">
-                <h3>{project.title}</h3>
-                <p className="myworks-card-category">{project.category}</p>
-                <p className="myworks-card-description">{project.description}</p>
-                <p className="myworks-card-tech">{project.technologies}</p>
+              <div className="myworks-card-action">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="myworks-repo-btn"
+                  data-cursor="disable"
+                  title={`View ${project.title} on GitHub`}
+                >
+                  <TbBrandGithub />
+                  <span>View Repository</span>
+                  <MdArrowOutward />
+                </a>
               </div>
-            </>
-          );
-
-          if (isInternalLink) {
-            return (
-              <Link
-                className="myworks-card"
-                key={project.id}
-                data-cursor="disable"
-                to={project.link}
-              >
-                {cardContent}
-              </Link>
-            );
-          }
-
-          return (
-            <a
-              className="myworks-card"
-              key={project.id}
-              data-cursor="disable"
-              href={project.link || undefined}
-              target={project.link ? "_blank" : undefined}
-              rel={project.link ? "noopener noreferrer" : undefined}
-            >
-              {cardContent}
-            </a>
-          );
-        })}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

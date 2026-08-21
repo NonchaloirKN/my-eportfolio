@@ -263,11 +263,19 @@
 
 .what-tags {
   font-size: 13px;
-  font-weight: 400;
-  padding: 2px 7px;
-  background-color: rgba(255, 255, 255, 0.15);
-  border: 1px solid #ffffff50;
+  font-weight: 500;
+  padding: 3px 10px;
+  background-color: rgba(0, 85, 150, 0.25);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  color: #e2e8f0;
   border-radius: 30px;
+  transition: all 0.2s ease;
+}
+
+.what-tags:hover {
+  background-color: rgba(0, 229, 255, 0.15);
+  border-color: #00e5ff;
+  color: #00e5ff;
 }
 
 @media only screen and (max-width: 1600px) {

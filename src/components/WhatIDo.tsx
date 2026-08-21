@@ -26,7 +26,7 @@ const WhatIDo = () => {
     };
   }, []);
   return (
-    <div className="whatIDO">
+    <div className="whatIDO" id="what-i-do">
       <div className="what-box">
         <h2 className="title">
           W<span className="hat-h2">HAT</span>
@@ -88,14 +88,14 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
 
             <div className="what-content-in">
-              <h3>{config.skills.develop.title}</h3>
-              <h4>{config.skills.develop.description}</h4>
+              <h3>{config.skills.embedded.title}</h3>
+              <h4>{config.skills.embedded.description}</h4>
               <p>
-                {config.skills.develop.details}
+                {config.skills.embedded.details}
               </p>
-              <h5>Skillset & tools</h5>
+              <h5>Skillset &amp; tools</h5>
               <div className="what-content-flex">
-                {config.skills.develop.tools.map((tool, index) => (
+                {config.skills.embedded.tools.map((tool, index) => (
                   <div key={index} className="what-tags">{tool}</div>
                 ))}
               </div>
@@ -121,14 +121,14 @@ const WhatIDo = () => {
             </div>
             <div className="what-corner"></div>
             <div className="what-content-in">
-              <h3>{config.skills.design.title}</h3>
-              <h4>{config.skills.design.description}</h4>
+              <h3>{config.skills.softwareAI.title}</h3>
+              <h4>{config.skills.softwareAI.description}</h4>
               <p>
-                {config.skills.design.details}
+                {config.skills.softwareAI.details}
               </p>
-              <h5>Skillset & tools</h5>
+              <h5>Skillset &amp; tools</h5>
               <div className="what-content-flex">
-                {config.skills.design.tools.map((tool, index) => (
+                {config.skills.softwareAI.tools.map((tool, index) => (
                   <div key={index} className="what-tags">{tool}</div>
                 ))}
               </div>

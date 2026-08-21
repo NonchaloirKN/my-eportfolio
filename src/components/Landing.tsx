@@ -71,7 +71,7 @@ const Landing = ({ children }: PropsWithChildren) => {
           {/* Mobile photo - shows only on mobile when 3D character is hidden */}
           <div className="mobile-photo">
             <img
-              src="/images/kiyuran_avatar_3d.png"
+              src={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/images/kiyuran_avatar_3d.png`}
               alt={config.developer.fullName}
               loading="eager"
               decoding="async"

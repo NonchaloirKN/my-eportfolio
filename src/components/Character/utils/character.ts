@@ -8,14 +8,18 @@ const setCharacter = (
   scene: THREE.Scene,
   camera: THREE.PerspectiveCamera
 ) => {
+  const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+
   const loader = new GLTFLoader();
   const dracoLoader = new DRACOLoader();
-  dracoLoader.setDecoderPath("/draco/");
+  dracoLoader.setDecoderPath(`${baseUrl}draco/`);
   loader.setDRACOLoader(dracoLoader);
 
   const loadCharacter = (): Promise<GLTF | null> => {
     return new Promise((resolve, reject) => {
-      const modelPath = "/models/character.glb";
+      const modelPath = `${baseUrl}models/character.glb`;
       console.log("Loading raw GLB model directly from:", modelPath);
 
       loader.load(

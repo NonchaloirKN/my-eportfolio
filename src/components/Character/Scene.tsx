@@ -246,7 +246,7 @@ const Scene = () => {
           >
             <div className="character-fallback-aura"></div>
             <img
-              src="/images/kiyuran_avatar_3d.png"
+              src={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/images/kiyuran_avatar_3d.png`}
               alt="Kiyuran Naidoo"
               className="character-fallback-img"
               loading="eager"

@@ -120,7 +120,7 @@ const TechStackNew = () => {
       {/* Subtle Video Background with Overlay */}
       <div className="techstack-video-container">
         <video autoPlay loop muted playsInline className="techstack-video">
-          <source src="/video/video.webm" type="video/webm" />
+          <source src={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/video/video.webm`} type="video/webm" />
         </video>
         <div className="techstack-overlay"></div>
       </div>

@@ -12,6 +12,8 @@ import { LoadingProvider } from "./context/LoadingProvider";
 const CharacterModel = lazy(() => import("./components/Character"));
 const MainContainer = lazy(() => import("./components/MainContainer"));
 
+const isVercel = typeof window !== "undefined" && window.location.hostname.includes("vercel.app");
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -33,8 +35,8 @@ const App = () => {
           />
         </Routes>
       </LoadingProvider>
-      <Analytics />
-      <SpeedInsights />
+      {isVercel && <Analytics />}
+      {isVercel && <SpeedInsights />}
     </BrowserRouter>
   );
 };

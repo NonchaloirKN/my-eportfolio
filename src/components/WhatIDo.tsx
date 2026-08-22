@@ -94,24 +94,21 @@ const WhatIDo = ({ setActiveSkillFilter }: WhatIDoProps) => {
             <div className="what-content-in">
               <h3>{config.skills.embedded.title}</h3>
               <h4>{config.skills.embedded.description}</h4>
-              <p>
-                {config.skills.embedded.details}
-              </p>
-              <button
-                onClick={() => {
-                  setActiveSkillFilter?.('hardware');
-                  document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="what-explore-btn text-cyan-400 hover:text-cyan-300 font-semibold cursor-pointer"
-                data-cursor="disable"
-              >
-                Explore Skillset &amp; Tools &#10140;
-              </button>
-              <h5>Skillset &amp; tools</h5>
-              <div className="what-content-flex">
-                {config.skills.embedded.tools.map((tool, index) => (
-                  <div key={index} className="what-tags">{tool}</div>
-                ))}
+              <div className="what-details-collapse">
+                <p>
+                  {config.skills.embedded.details}
+                </p>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveSkillFilter?.('hardware');
+                    document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="what-explore-btn text-cyan-400 hover:text-cyan-300 font-semibold transition-all cursor-pointer"
+                  data-cursor="disable"
+                >
+                  Explore Skillset &amp; Tools &#10140;
+                </button>
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -137,24 +134,21 @@ const WhatIDo = ({ setActiveSkillFilter }: WhatIDoProps) => {
             <div className="what-content-in">
               <h3>{config.skills.softwareAI.title}</h3>
               <h4>{config.skills.softwareAI.description}</h4>
-              <p>
-                {config.skills.softwareAI.details}
-              </p>
-              <button
-                onClick={() => {
-                  setActiveSkillFilter?.('software');
-                  document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="what-explore-btn text-cyan-400 hover:text-cyan-300 font-semibold cursor-pointer"
-                data-cursor="disable"
-              >
-                Explore Skillset &amp; Tools &#10140;
-              </button>
-              <h5>Skillset &amp; tools</h5>
-              <div className="what-content-flex">
-                {config.skills.softwareAI.tools.map((tool, index) => (
-                  <div key={index} className="what-tags">{tool}</div>
-                ))}
+              <div className="what-details-collapse">
+                <p>
+                  {config.skills.softwareAI.details}
+                </p>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveSkillFilter?.('software');
+                    document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="what-explore-btn text-cyan-400 hover:text-cyan-300 font-semibold transition-all cursor-pointer"
+                  data-cursor="disable"
+                >
+                  Explore Skillset &amp; Tools &#10140;
+                </button>
               </div>
               <div className="what-arrow"></div>
             </div>

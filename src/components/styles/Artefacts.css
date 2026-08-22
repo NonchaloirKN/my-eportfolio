@@ -947,3 +947,243 @@
   transform: translateX(4px);
 }
 
+/* ========================================================= */
+/* BESPOKE PROJECT CSS ART & ANIMATIONS                      */
+/* ========================================================= */
+
+/* 1. Maxwell Neural Network Tensor Stream */
+@keyframes tensorStream {
+  0% {
+    stroke-dashoffset: 40;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes nodeGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px #00e5ff, 0 0 20px rgba(0, 229, 255, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px #00e5ff, 0 0 35px rgba(0, 229, 255, 0.8);
+    transform: scale(1.15);
+  }
+}
+
+.animate-tensor-path {
+  stroke-dasharray: 6, 8;
+  animation: tensorStream 2s linear infinite;
+}
+
+.animate-node-pulse {
+  animation: nodeGlow 2.5s ease-in-out infinite;
+}
+
+/* 2. AQUA 3D Scanning Laser Sweep */
+@keyframes laserSweepVertical {
+  0% {
+    top: 6%;
+  }
+  50% {
+    top: 88%;
+  }
+  100% {
+    top: 6%;
+  }
+}
+
+.laser-scanner-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #00e5ff;
+  box-shadow: 0 0 15px #00e5ff, 0 0 30px rgba(0, 229, 255, 0.8);
+  animation: laserSweepVertical 3s ease-in-out infinite;
+  z-index: 10;
+}
+
+.laser-scanner-aura {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  transform: translateY(-50%);
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0) 0%, rgba(0, 229, 255, 0.18) 50%, rgba(0, 229, 255, 0) 100%);
+  animation: laserSweepVertical 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 9;
+}
+
+/* 3. UmNyango Bouncing Serverless Cloud Nodes */
+@keyframes floatNode1 {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes floatNode2 {
+  0%, 100% {
+    transform: translateY(-8px);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes floatNode3 {
+  0%, 100% {
+    transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float-node-1 {
+  animation: floatNode1 3.2s ease-in-out infinite;
+}
+
+.animate-float-node-2 {
+  animation: floatNode2 3.6s ease-in-out infinite;
+}
+
+.animate-float-node-3 {
+  animation: floatNode3 2.8s ease-in-out infinite;
+}
+
+@keyframes cloudStream {
+  0% {
+    stroke-dashoffset: 32;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-cloud-stream {
+  stroke-dasharray: 4, 6;
+  animation: cloudStream 1.8s linear infinite;
+}
+
+/* 4. Micromouse Animated Maze Traversal */
+@keyframes micromouseTraverse {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  16% {
+    transform: translate(44px, 0px);
+  }
+  33% {
+    transform: translate(44px, 44px);
+  }
+  50% {
+    transform: translate(88px, 44px);
+  }
+  66% {
+    transform: translate(88px, 88px);
+  }
+  83% {
+    transform: translate(132px, 88px);
+  }
+  100% {
+    transform: translate(132px, 132px);
+  }
+}
+
+.animate-micromouse {
+  animation: micromouseTraverse 4.5s ease-in-out infinite alternate;
+}
+
+/* 5. Antarctic Probe Frost & Telemetry */
+@keyframes tempBarFill {
+  0%, 100% {
+    height: 38%;
+  }
+  50% {
+    height: 48%;
+  }
+}
+
+.animate-temp-bar {
+  animation: tempBarFill 4s ease-in-out infinite;
+}
+
+@keyframes frostShimmer {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-frost-shimmer {
+  animation: frostShimmer 3s ease-in-out infinite;
+}
+
+/* 6. YODA RISC Flowing Datapath Pipeline */
+@keyframes pipelineShift {
+  0% {
+    left: 4px;
+    opacity: 1;
+  }
+  20% {
+    left: calc(20% + 4px);
+    opacity: 1;
+  }
+  40% {
+    left: calc(40% + 4px);
+    opacity: 1;
+  }
+  60% {
+    left: calc(60% + 4px);
+    opacity: 1;
+  }
+  80% {
+    left: calc(80% + 4px);
+    opacity: 1;
+  }
+  95% {
+    left: calc(80% + 4px);
+    opacity: 0.2;
+  }
+  100% {
+    left: 4px;
+    opacity: 0;
+  }
+}
+
+.animate-pipeline-token {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  width: calc(20% - 8px);
+  background: rgba(0, 229, 255, 0.15);
+  border: 1.5px solid #00e5ff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+  pointer-events: none;
+  animation: pipelineShift 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  z-index: 10;
+}
+
+@keyframes clockWave {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 40;
+  }
+}
+
+.animate-clock-wave {
+  stroke-dasharray: 40;
+  animation: clockWave 1.2s linear infinite;
+}
+

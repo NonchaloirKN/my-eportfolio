@@ -5,15 +5,315 @@ import {
   MdPsychology, 
   MdCheck, 
   MdKeyboardArrowDown, 
-  MdKeyboardArrowUp,
-  MdLayers,
-  MdAccountTree,
+  MdKeyboardArrowUp, 
+  MdLayers, 
+  MdAccountTree, 
 } from "react-icons/md";
-import { TbBrandGithub, TbCpu, TbCloudComputing, TbRoute, TbDeviceAnalytics, TbBinaryTree } from "react-icons/tb";
+import { 
+  TbBrandGithub, 
+  TbCpu, 
+  TbCloudComputing, 
+  TbRoute, 
+  TbDeviceAnalytics, 
+  TbBinaryTree,
+  TbDeviceMobile,
+  TbDatabase,
+} from "react-icons/tb";
 import { config } from "../config";
 import "./styles/Artefacts.css";
 
 type TabType = "all" | "technical" | "reflections" | "deliverables";
+
+/* ========================================================= */
+/* BESPOKE PROJECT CSS ART VISUALS                           */
+/* ========================================================= */
+
+// 1. Maxwell & Spark Neural Network Visual
+const MaxwellNeuralVisual = () => (
+  <div className="relative w-full h-44 bg-slate-950/85 rounded-xl border border-cyan-500/30 overflow-hidden my-4 flex items-center justify-center p-3 shadow-inner">
+    {/* Cyber Matrix Grid Background */}
+    <div className="absolute inset-0 bg-[linear-gradient(to_right,#00559612_1px,transparent_1px),linear-gradient(to_bottom,#00559612_1px,transparent_1px)] bg-[size:16px_16px]"></div>
+
+    {/* SVG Connecting Synaptic Lines */}
+    <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line x1="15" y1="28" x2="50" y2="22" stroke="rgba(0,229,255,0.3)" strokeWidth="1.5" />
+      <line x1="15" y1="28" x2="50" y2="78" stroke="rgba(0,229,255,0.3)" strokeWidth="1.5" />
+      <line x1="15" y1="72" x2="50" y2="22" stroke="rgba(0,229,255,0.3)" strokeWidth="1.5" />
+      <line x1="15" y1="72" x2="50" y2="78" stroke="rgba(0,229,255,0.3)" strokeWidth="1.5" />
+      <line x1="50" y1="22" x2="85" y2="50" stroke="rgba(0,229,255,0.3)" strokeWidth="1.5" />
+      <line x1="50" y1="78" x2="85" y2="50" stroke="rgba(0,229,255,0.3)" strokeWidth="1.5" />
+
+      {/* Animated Tensor Data Flows */}
+      <line x1="15" y1="28" x2="50" y2="22" stroke="#ffffff" strokeWidth="2" className="animate-tensor-path" />
+      <line x1="15" y1="72" x2="50" y2="78" stroke="#00e5ff" strokeWidth="2" className="animate-tensor-path" />
+      <line x1="50" y1="22" x2="85" y2="50" stroke="#00e5ff" strokeWidth="2" className="animate-tensor-path" />
+      <line x1="50" y1="78" x2="85" y2="50" stroke="#ffffff" strokeWidth="2" className="animate-tensor-path" />
+    </svg>
+
+    {/* 5 Scattered Neural Nodes */}
+    <div className="absolute left-[15%] top-[28%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+      <div className="w-3.5 h-3.5 rounded-full bg-cyan-400 shadow-[0_0_15px_#00e5ff] animate-node-pulse"></div>
+      <span className="text-[10px] text-cyan-300 font-mono mt-1">Sensor In</span>
+    </div>
+
+    <div className="absolute left-[15%] top-[72%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+      <div className="w-3.5 h-3.5 rounded-full bg-cyan-400 shadow-[0_0_15px_#00e5ff] animate-node-pulse"></div>
+      <span className="text-[10px] text-cyan-300 font-mono mt-1">Vision In</span>
+    </div>
+
+    <div className="absolute left-[50%] top-[22%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+      <div className="w-3.5 h-3.5 rounded-full bg-cyan-400 shadow-[0_0_15px_#00e5ff] animate-node-pulse"></div>
+      <span className="text-[10px] text-cyan-300 font-mono mt-1">ONNX WASM</span>
+    </div>
+
+    <div className="absolute left-[50%] top-[78%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+      <div className="w-3.5 h-3.5 rounded-full bg-cyan-400 shadow-[0_0_15px_#00e5ff] animate-node-pulse"></div>
+      <span className="text-[10px] text-cyan-300 font-mono mt-1">NPU Core</span>
+    </div>
+
+    <div className="absolute left-[85%] top-[50%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+      <div className="w-4 h-4 rounded-full bg-cyan-300 shadow-[0_0_20px_#00e5ff] animate-node-pulse"></div>
+      <span className="text-[10px] text-cyan-200 font-bold font-mono mt-1">YOLOv8</span>
+    </div>
+
+    {/* HUD Status Tag */}
+    <div className="absolute bottom-2 left-3 text-[10px] font-mono text-slate-400 flex items-center gap-2">
+      <span className="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+      <span>FORWARD-PASS TENSOR PIPELINE &bull; ACTIVE</span>
+    </div>
+  </div>
+);
+
+// 2. AQUA 3D Laser Scanning Visual
+const AquaLaserVisual = () => (
+  <div className="relative w-full h-44 bg-slate-950/85 rounded-xl border border-cyan-500/30 overflow-hidden my-4 p-3 shadow-inner flex flex-col justify-between">
+    {/* 3D Wireframe Grid Background */}
+    <div className="absolute inset-0 bg-[radial-gradient(#00559628_1px,transparent_1px)] [background-size:12px_12px] opacity-70"></div>
+
+    {/* Perspective Grid Lines */}
+    <div className="absolute inset-0 flex flex-col justify-between opacity-30 pointer-events-none">
+      <div className="w-full h-px bg-cyan-400/40"></div>
+      <div className="w-full h-px bg-cyan-400/20"></div>
+      <div className="w-full h-px bg-cyan-400/40"></div>
+      <div className="w-full h-px bg-cyan-400/20"></div>
+      <div className="w-full h-px bg-cyan-400/40"></div>
+    </div>
+
+    {/* Surface Point Cloud Targets */}
+    <div className="absolute inset-0 flex items-center justify-around px-8 opacity-75">
+      {[20, 45, 70, 30, 80, 50, 65, 35].map((h, i) => (
+        <div key={i} className="flex flex-col items-center gap-1">
+          <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#00e5ff]"></div>
+          <div className="w-0.5 bg-cyan-500/30" style={{ height: `${h}px` }}></div>
+          <div className="text-[8px] font-mono text-cyan-300/80">+{h}mm</div>
+        </div>
+      ))}
+    </div>
+
+    {/* Sweeping Laser Beam and Gradient Aura */}
+    <div className="laser-scanner-line"></div>
+    <div className="laser-scanner-aura"></div>
+
+    {/* Top HUD */}
+    <div className="relative z-20 flex justify-between items-center text-[10px] font-mono text-cyan-300 bg-slate-900/80 backdrop-blur-sm px-2.5 py-1 rounded border border-cyan-500/30">
+      <div className="flex items-center gap-1.5">
+        <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+        <span>OPTICAL TRIANGULATION ACTIVE</span>
+      </div>
+      <span>ACCURACY: &plusmn;0.018mm</span>
+    </div>
+
+    {/* Bottom HUD */}
+    <div className="relative z-20 flex justify-between items-center text-[9px] font-mono text-slate-400">
+      <span>SENSOR: RASPBERRY PI CAMERA 3</span>
+      <span>EXPORT: .PLY POINT CLOUD</span>
+    </div>
+  </div>
+);
+
+// 3. UmNyango Bouncing Serverless Cloud Nodes
+const UmNyangoCloudVisual = () => (
+  <div className="relative w-full h-44 bg-slate-950/85 rounded-xl border border-blue-500/30 overflow-hidden my-4 p-4 shadow-inner flex items-center justify-between">
+    {/* Background Network Grid */}
+    <div className="absolute inset-0 bg-[radial-gradient(#3b82f615_1px,transparent_1px)] [background-size:14px_14px]"></div>
+
+    {/* SVG Connecting Stream Line */}
+    <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line x1="20" y1="50" x2="50" y2="50" stroke="rgba(59,130,246,0.3)" strokeWidth="2" />
+      <line x1="50" y1="50" x2="80" y2="50" stroke="rgba(249,115,22,0.3)" strokeWidth="2" />
+      <line x1="20" y1="50" x2="50" y2="50" stroke="#38bdf8" strokeWidth="2" className="animate-cloud-stream" />
+      <line x1="50" y1="50" x2="80" y2="50" stroke="#f97316" strokeWidth="2" className="animate-cloud-stream" />
+    </svg>
+
+    {/* Node 1: Mobile Client */}
+    <div className="relative z-10 flex flex-col items-center gap-1.5 animate-float-node-1">
+      <div className="w-12 h-12 rounded-xl bg-blue-950/80 border border-blue-400/50 shadow-[0_0_15px_rgba(59,130,246,0.4)] flex items-center justify-center text-blue-300 text-xl backdrop-blur-md">
+        <TbDeviceMobile />
+      </div>
+      <span className="text-[10px] font-mono text-blue-200 font-semibold">Mobile App</span>
+      <span className="text-[8px] font-mono text-blue-400/80 bg-blue-950/60 px-1.5 py-0.5 rounded border border-blue-500/30">React Client</span>
+    </div>
+
+    {/* Node 2: WebSocket API Gateway */}
+    <div className="relative z-10 flex flex-col items-center gap-1.5 animate-float-node-2">
+      <div className="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-400/50 shadow-[0_0_15px_rgba(168,85,247,0.4)] flex items-center justify-center text-purple-300 text-xl backdrop-blur-md">
+        <TbDatabase />
+      </div>
+      <span className="text-[10px] font-mono text-purple-200 font-semibold">WebSocket API</span>
+      <span className="text-[8px] font-mono text-purple-400/80 bg-purple-950/60 px-1.5 py-0.5 rounded border border-purple-500/30">WSS :443 (12ms)</span>
+    </div>
+
+    {/* Node 3: AWS Serverless Lambda */}
+    <div className="relative z-10 flex flex-col items-center gap-1.5 animate-float-node-3">
+      <div className="w-12 h-12 rounded-xl bg-orange-950/80 border border-orange-400/50 shadow-[0_0_15px_rgba(249,115,22,0.4)] flex items-center justify-center text-orange-300 text-xl backdrop-blur-md">
+        <TbCloudComputing />
+      </div>
+      <span className="text-[10px] font-mono text-orange-200 font-semibold">AWS Lambda</span>
+      <span className="text-[8px] font-mono text-orange-400/80 bg-orange-950/60 px-1.5 py-0.5 rounded border border-orange-500/30">Voice Transcribe</span>
+    </div>
+  </div>
+);
+
+// 4. Micromouse Animated Maze Traversal
+const MicromouseMazeVisual = () => (
+  <div className="relative w-full h-48 bg-slate-950/85 rounded-xl border border-cyan-500/30 overflow-hidden my-4 p-3 shadow-inner flex flex-col items-center justify-center">
+    {/* Maze Grid (4x4) */}
+    <div className="relative grid grid-cols-4 gap-1.5 p-2 bg-slate-900/90 border border-slate-700/80 rounded-xl shadow-2xl">
+      {/* Animated Micromouse Bot */}
+      <div className="absolute top-2 left-2 w-8 h-8 rounded-lg bg-emerald-500/40 border-2 border-emerald-400 shadow-[0_0_15px_#10b981] flex items-center justify-center text-emerald-200 z-20 animate-micromouse pointer-events-none">
+        <TbCpu className="text-sm" />
+      </div>
+
+      {/* 16 Maze Cells */}
+      {/* Row 0 */}
+      <div className="w-8 h-8 rounded bg-cyan-950/60 border border-cyan-400/40 flex items-center justify-center text-[9px] font-mono font-bold text-cyan-300">S</div>
+      <div className="w-8 h-8 rounded bg-cyan-950/30 border border-cyan-500/20"></div>
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+
+      {/* Row 1 */}
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      <div className="w-8 h-8 rounded bg-cyan-950/30 border border-cyan-500/20"></div>
+      <div className="w-8 h-8 rounded bg-cyan-950/30 border border-cyan-500/20"></div>
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+
+      {/* Row 2 */}
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      <div className="w-8 h-8 rounded bg-cyan-950/30 border border-cyan-500/20"></div>
+      <div className="w-8 h-8 rounded bg-cyan-950/30 border border-cyan-500/20"></div>
+
+      {/* Row 3 */}
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      <div className="w-8 h-8 rounded bg-emerald-950/80 border-2 border-emerald-400 shadow-[0_0_10px_#10b981] flex items-center justify-center text-[9px] font-mono font-bold text-emerald-300">G</div>
+    </div>
+
+    <div className="mt-2 text-[10px] font-mono text-cyan-300 flex items-center gap-2">
+      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+      <span>FLOODFILL SOLVER &bull; TRAVERSING 24-CELL MAZE</span>
+    </div>
+  </div>
+);
+
+// 5. Antarctic Probe Frost & Telemetry Visual
+const AntarcticProbeVisual = () => (
+  <div className="relative w-full h-44 backdrop-blur-xl bg-cyan-950/20 border border-cyan-300/30 rounded-xl overflow-hidden my-4 p-4 shadow-[inset_0_0_25px_rgba(0,229,255,0.12)] flex items-center justify-between">
+    {/* Frost background shimmer */}
+    <div className="absolute inset-0 bg-[radial-gradient(#00e5ff15_1px,transparent_1px)] [background-size:16px_16px] animate-frost-shimmer"></div>
+
+    {/* Thermometer Tube Graphic */}
+    <div className="relative z-10 flex items-center gap-3">
+      <div className="w-6 h-28 bg-slate-950/90 rounded-full border border-cyan-400/50 p-1 flex flex-col justify-end shadow-[0_0_15px_rgba(0,229,255,0.3)]">
+        <div className="w-full rounded-full bg-gradient-to-t from-cyan-400 via-blue-500 to-rose-500 animate-temp-bar"></div>
+      </div>
+      <div className="flex flex-col justify-between h-28 text-[9px] font-mono text-cyan-300/70 py-1">
+        <span>0&deg;C</span>
+        <span>-25&deg;C</span>
+        <span className="text-cyan-300 font-bold">-50&deg;C</span>
+      </div>
+    </div>
+
+    {/* Digital Sensor Telemetry Readout */}
+    <div className="relative z-10 flex flex-col justify-center gap-2 flex-1 ml-6 font-mono text-xs">
+      <div className="flex items-center justify-between bg-slate-900/80 border border-cyan-500/30 px-3 py-1.5 rounded-lg shadow-sm">
+        <span className="text-slate-400 text-[10px]">CORE TEMP:</span>
+        <span className="text-cyan-300 font-bold text-sm tracking-wider animate-pulse">-38.4&deg;C</span>
+      </div>
+      <div className="flex items-center justify-between bg-slate-900/80 border border-cyan-500/30 px-3 py-1 rounded-lg">
+        <span className="text-slate-400 text-[10px]">SPECTRAL:</span>
+        <span className="text-blue-300 font-semibold text-xs">412nm (UV-B)</span>
+      </div>
+      <div className="flex items-center justify-between bg-slate-900/80 border border-cyan-500/30 px-3 py-1 rounded-lg">
+        <span className="text-slate-400 text-[10px]">PRESSURE / MCU:</span>
+        <span className="text-emerald-400 text-[10px]">984.6 hPa &bull; ESP32-C6</span>
+      </div>
+    </div>
+  </div>
+);
+
+// 6. YODA RISC Processor Flowing Datapath Pipeline Visual
+const YodaProcessorVisual = () => (
+  <div className="relative w-full h-44 bg-slate-950/85 rounded-xl border border-indigo-500/30 overflow-hidden my-4 p-3.5 shadow-inner flex flex-col justify-between">
+    {/* Top Title Bar */}
+    <div className="flex items-center justify-between text-[10px] font-mono text-indigo-300 border-b border-indigo-500/20 pb-1.5">
+      <span className="font-bold">5-STAGE RISC DATAPATH PIPELINE</span>
+      <span className="text-cyan-400">CLK: 50 MHz &bull; IPC = 1.0</span>
+    </div>
+
+    {/* 5 Stages Container with Moving Highlight Token */}
+    <div className="relative w-full flex items-center justify-between gap-1.5 py-1">
+      {/* Glowing Highlight Box moving through the pipeline */}
+      <div className="animate-pipeline-token"></div>
+
+      {/* Stage 1: Fetch */}
+      <div className="flex-1 bg-slate-900/80 border border-indigo-500/40 rounded-lg p-2 text-center relative z-0">
+        <div className="text-[11px] font-bold text-white font-mono">IF</div>
+        <div className="text-[8px] text-indigo-300 font-mono">PC + 4</div>
+      </div>
+
+      {/* Stage 2: Decode */}
+      <div className="flex-1 bg-slate-900/80 border border-indigo-500/40 rounded-lg p-2 text-center relative z-0">
+        <div className="text-[11px] font-bold text-white font-mono">ID</div>
+        <div className="text-[8px] text-indigo-300 font-mono">Reg[rs]</div>
+      </div>
+
+      {/* Stage 3: Execute */}
+      <div className="flex-1 bg-slate-900/80 border border-indigo-500/40 rounded-lg p-2 text-center relative z-0">
+        <div className="text-[11px] font-bold text-white font-mono">EX</div>
+        <div className="text-[8px] text-indigo-300 font-mono">ALU Core</div>
+      </div>
+
+      {/* Stage 4: Memory */}
+      <div className="flex-1 bg-slate-900/80 border border-indigo-500/40 rounded-lg p-2 text-center relative z-0">
+        <div className="text-[11px] font-bold text-white font-mono">MEM</div>
+        <div className="text-[8px] text-indigo-300 font-mono">SRAM</div>
+      </div>
+
+      {/* Stage 5: Writeback */}
+      <div className="flex-1 bg-slate-900/80 border border-indigo-500/40 rounded-lg p-2 text-center relative z-0">
+        <div className="text-[11px] font-bold text-white font-mono">WB</div>
+        <div className="text-[8px] text-indigo-300 font-mono">Reg[rd]</div>
+      </div>
+    </div>
+
+    {/* Clock Cycle Waveform Animation */}
+    <div className="flex items-center justify-between gap-2 pt-1 border-t border-indigo-500/20">
+      <span className="text-[9px] font-mono text-slate-400">CLOCK WAVE:</span>
+      <svg className="w-48 h-3 text-cyan-400" viewBox="0 0 200 12" preserveAspectRatio="none">
+        <path
+          d="M0,10 L15,10 L15,2 L30,2 L30,10 L45,10 L45,2 L60,2 L60,10 L75,10 L75,2 L90,2 L90,10 L105,10 L105,2 L120,2 L120,10 L135,10 L135,2 L150,2 L150,10 L165,10 L165,2 L180,2 L180,10 L200,10"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          className="animate-clock-wave"
+        />
+      </svg>
+      <span className="text-[9px] font-mono text-emerald-400">SYNCHRONOUS</span>
+    </div>
+  </div>
+);
 
 interface ReflectionItem {
   id: number;
@@ -122,7 +422,7 @@ const Artefacts = () => {
               data-cursor="disable"
             >
               <MdAccountTree />
-              Architecture Flowcharts &amp; Evidence (6)
+              Architecture Visuals &amp; Evidence (6)
             </button>
             <button
               className={`artefact-tab-btn ${activeTab === "reflections" ? "tab-btn-active" : ""}`}
@@ -144,7 +444,7 @@ const Artefacts = () => {
         </div>
 
         {/* ========================================================= */}
-        {/* PART 1: 6 STUNNING PROJECT CARDS WITH INTERACTIVE FLOWCHARTS */}
+        {/* PART 1: 6 STUNNING PROJECT CARDS WITH BESPOKE CSS ART     */}
         {/* ========================================================= */}
         {(activeTab === "all" || activeTab === "technical") && (
           <div className="artefacts-group-block">
@@ -189,20 +489,8 @@ const Artefacts = () => {
                   Architected a full-stack platform featuring live YOLO ONNX inference in WebAssembly, SignalR WebSockets telemetry streaming, and an interrupt-driven STM32N6 NPU OS shell.
                 </p>
 
-                {/* High-Fidelity Flowchart: Maxwell & Spark */}
-                <div className="flex md:flex-row flex-col items-center gap-3 w-full py-4">
-                  <div className="bg-slate-800/80 border border-cyan-500/50 shadow-[0_0_15px_rgba(0,229,255,0.2)] rounded-lg p-3 text-cyan-50 text-sm font-semibold backdrop-blur-sm flex-1 text-center w-full">
-                    STM32N6 Edge OS
-                  </div>
-                  <div className="w-4 h-4 bg-cyan-400 rounded-full animate-pulse shadow-[0_0_10px_#00e5ff] flex-shrink-0"></div>
-                  <div className="bg-slate-800/80 border border-cyan-500/50 shadow-[0_0_15px_rgba(0,229,255,0.2)] rounded-lg p-3 text-cyan-50 text-sm font-semibold backdrop-blur-sm flex-1 text-center w-full">
-                    ASP.NET Core SignalR
-                  </div>
-                  <div className="w-4 h-4 bg-cyan-400 rounded-full animate-pulse shadow-[0_0_10px_#00e5ff] flex-shrink-0"></div>
-                  <div className="bg-slate-800/80 border border-cyan-500/50 shadow-[0_0_15px_rgba(0,229,255,0.2)] rounded-lg p-3 text-cyan-50 text-sm font-semibold backdrop-blur-sm flex-1 text-center w-full">
-                    React + ONNX WASM
-                  </div>
-                </div>
+                {/* Bespoke CSS Art: Maxwell & Spark Neural Network */}
+                <MaxwellNeuralVisual />
 
                 <div className="evidence-card-footer mt-4">
                   <div className="flex flex-wrap gap-2">
@@ -242,14 +530,8 @@ const Artefacts = () => {
                   Engineered an automated optical laser triangulation pipeline extracting sub-pixel laser profiles from Raspberry Pi Camera 3 feeds into dense 3D point clouds.
                 </p>
 
-                {/* High-Fidelity Vertical Pipeline: AQUA */}
-                <div className="flex flex-col gap-2 w-full py-4">
-                  {['Raspberry Pi Camera 3', 'OpenCV: Sub-Pixel Thresholding', '3D Spatial Triangulation', '.PLY Point Cloud Export'].map((step) => (
-                    <div key={step} className="w-full bg-gradient-to-r from-slate-900 to-slate-800 border-l-4 border-cyan-400 p-3 rounded-r-lg text-gray-200 text-sm font-medium shadow-md">
-                      {step}
-                    </div>
-                  ))}
-                </div>
+                {/* Bespoke CSS Art: AQUA 3D Laser Scanning */}
+                <AquaLaserVisual />
 
                 <div className="evidence-card-footer mt-4">
                   <div className="flex flex-wrap gap-2">
@@ -289,20 +571,8 @@ const Artefacts = () => {
                   Standard Bank UniHack AI healthcare platform facilitating real-time multilingual voice triage, WebSocket API Gateway routing, and serverless AWS Lambda transcription pipelines.
                 </p>
 
-                {/* High-Fidelity Cloud Infrastructure: UmNyango */}
-                <div className="flex md:flex-row flex-col items-center justify-between w-full py-4 gap-4">
-                  <div className="bg-blue-900/40 border border-blue-500/50 rounded-lg p-4 text-center text-blue-100 flex-1 w-full font-medium">
-                    React Frontend
-                  </div>
-                  <span className="text-blue-400 font-bold text-xl animate-pulse">⟷</span>
-                  <div className="bg-purple-900/40 border border-purple-500/50 rounded-lg p-4 text-center text-purple-100 flex-1 w-full font-medium">
-                    WebSocket API Gateway
-                  </div>
-                  <span className="text-orange-400 font-bold text-xl animate-pulse">⟷</span>
-                  <div className="bg-orange-900/40 border border-orange-500/50 rounded-lg p-4 text-center text-orange-100 flex-1 w-full font-medium">
-                    AWS Lambda &amp; Transcribe
-                  </div>
-                </div>
+                {/* Bespoke CSS Art: UmNyango Bouncing Serverless Nodes */}
+                <UmNyangoCloudVisual />
 
                 <div className="evidence-card-footer mt-4">
                   <div className="flex flex-wrap gap-2">
@@ -342,19 +612,8 @@ const Artefacts = () => {
                   Programmed complex path-planning and cell-mapping logic for an autonomous 24-cell micromouse maze navigation system.
                 </p>
 
-                {/* High-Fidelity 2x2 Maze Grid: Micromouse */}
-                <div className="grid grid-cols-2 gap-2 p-4 bg-slate-900/50 rounded-lg border border-slate-700 w-48 mx-auto my-2">
-                  <div className="bg-cyan-500/20 border border-cyan-400 h-10 rounded shadow-[0_0_10px_#00e5ff] flex items-center justify-center text-xs text-cyan-200 font-medium">
-                    Start
-                  </div>
-                  <div className="bg-cyan-500/50 border border-cyan-400 h-10 rounded animate-pulse shadow-[0_0_15px_#00e5ff] flex items-center justify-center text-xs text-cyan-100 font-medium">
-                    Path
-                  </div>
-                  <div className="bg-slate-800 h-10 rounded border border-slate-600"></div>
-                  <div className="bg-green-500/30 border border-green-400 h-10 rounded shadow-[0_0_10px_#4ade80] flex items-center justify-center text-xs text-green-200 font-medium">
-                    Target
-                  </div>
-                </div>
+                {/* Bespoke CSS Art: Micromouse Animated Maze Traversal */}
+                <MicromouseMazeVisual />
 
                 <div className="evidence-card-footer mt-4">
                   <div className="flex flex-wrap gap-2">
@@ -394,21 +653,8 @@ const Artefacts = () => {
                   Contributed to the circuit design, bill of materials, and firmware for a spectrophotometer probe utilising ESP32-C6 microcontrollers and spectral sensors.
                 </p>
 
-                {/* High-Fidelity Hardware Pinout: Antarctic Probe */}
-                <div className="flex items-center justify-center gap-4 py-4 w-full">
-                  <div className="bg-zinc-800 border-2 border-zinc-500 rounded-md p-4 text-zinc-100 font-mono text-sm relative">
-                    <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-2 h-2 bg-yellow-400 rounded-full"></div>
-                    ESP32-C6 MCU
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <span className="text-[10px] text-gray-400 uppercase tracking-widest">I2C / SPI</span>
-                    <div className="w-16 h-0.5 bg-yellow-400/50 border-t border-dashed border-yellow-400"></div>
-                  </div>
-                  <div className="bg-zinc-800 border-2 border-zinc-500 rounded-md p-4 text-zinc-100 font-mono text-sm relative">
-                    <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-2 h-2 bg-yellow-400 rounded-full"></div>
-                    Spectral Sensors
-                  </div>
-                </div>
+                {/* Bespoke CSS Art: Antarctic Sensor Interface */}
+                <AntarcticProbeVisual />
 
                 <div className="evidence-card-footer mt-4">
                   <div className="flex flex-wrap gap-2">
@@ -448,17 +694,8 @@ const Artefacts = () => {
                   Designed and implemented a baseline RISC processor architecture using hardware description languages and timing analysis.
                 </p>
 
-                {/* High-Fidelity Linear Datapath Pipeline: YODA RISC */}
-                <div className="flex flex-wrap items-center justify-center gap-2 py-4">
-                  {['Fetch', 'Decode', 'ALU Execute', 'Memory', 'Writeback'].map((stage, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <div className="bg-indigo-900/60 border border-indigo-400/50 px-3 py-1 rounded text-xs font-mono text-indigo-100 uppercase tracking-wider">
-                        {stage}
-                      </div>
-                      {i < 4 && <span className="text-indigo-500/70">▶</span>}
-                    </div>
-                  ))}
-                </div>
+                {/* Bespoke CSS Art: YODA RISC Processor Flowing Datapath Pipeline */}
+                <YodaProcessorVisual />
 
                 <div className="evidence-card-footer mt-4">
                   <div className="flex flex-wrap gap-2">

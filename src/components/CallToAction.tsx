@@ -18,7 +18,7 @@ const CallToAction = () => {
 
         <Link to="/play" className="cta-btn cta-btn-play" data-cursor="disable">
           <MdGamepad className="cta-btn-icon" />
-          AI Chess Arena &rarr;
+          Play With Me &rarr;
         </Link>
       </div>
     </div>

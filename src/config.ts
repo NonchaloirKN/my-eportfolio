@@ -32,7 +32,7 @@ export const config = {
     subtitle: "Embedded Systems | Edge AI | Machine Learning",
     university: "University of Cape Town (UCT)",
     degree: "BSc(Eng) Electrical & Computer Engineering",
-    cvUrl: "/Kiyuran Naidoo - CV 2026.pdf",
+    cvUrl: `${import.meta.env.BASE_URL.replace(/\/$/, "")}/Kiyuran Naidoo - CV 2026 - ePortfolio.pdf`,
     description:
       "Final-Year BSc(Eng) Electrical and Computer Engineering student at the University of Cape Town. Specialising in the intersection of hardware and software: Embedded Systems, Edge AI, and Machine Learning."
   },
@@ -41,8 +41,7 @@ export const config = {
     linkedin: "https://www.linkedin.com/in/kiyuran-naidoo-b12301354",
     email: "kiyuran.naidoo@gmail.com",
     academicEmail: "NDXKIY001@myuct.ac.za",
-    location: "Cape Town / Durban, South Africa",
-    phone: "+27 (0)65 816 5943"
+    location: "Cape Town / Durban, South Africa"
   },
   navLinks,
   about: {
@@ -217,11 +216,10 @@ export const config = {
   contact: {
     email: "kiyuran.naidoo@gmail.com",
     academicEmail: "NDXKIY001@myuct.ac.za",
-    phone: "+27 (0)65 816 5943",
     github: "https://github.com/NonchaloirKN",
     linkedin: "https://www.linkedin.com/in/kiyuran-naidoo-b12301354",
     location: "Cape Town / Durban, South Africa",
-    cvUrl: "/Kiyuran Naidoo - CV 2026.pdf"
+    cvUrl: `${import.meta.env.BASE_URL.replace(/\/$/, "")}/Kiyuran Naidoo - CV 2026 - ePortfolio.pdf`
   },
   skills: {
     embedded: {

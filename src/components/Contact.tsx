@@ -6,8 +6,7 @@ import {
   MdLocationOn, 
   MdSchool, 
   MdSend, 
-  MdCheckCircle,
-  MdPhone
+  MdCheckCircle
 } from "react-icons/md";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import "./styles/Contact.css";
@@ -193,12 +192,6 @@ const Contact = () => {
                   <MdSchool /> {config.contact.academicEmail}
                 </a>
               </p>
-              <h4>Phone &bull; WhatsApp</h4>
-              <p>
-                <a href={`tel:${config.contact.phone.replace(/[^0-9+]/g, '')}`} data-cursor="disable">
-                  <MdPhone /> {config.contact.phone}
-                </a>
-              </p>
               <h4>Location</h4>
               <p>
                 <span><MdLocationOn /> {config.social.location}</span>
@@ -233,8 +226,8 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 data-cursor="disable"
                 className="contact-social contact-social-cv"
-                download
-                title="Download 2026 CV"
+                download="Kiyuran Naidoo - CV 2026 - ePortfolio.pdf"
+                title="Download Kiyuran Naidoo - CV 2026 - ePortfolio.pdf"
               >
                 <span><MdDownload /> Curriculum Vitae 2026 (PDF)</span> <MdArrowOutward />
               </a>

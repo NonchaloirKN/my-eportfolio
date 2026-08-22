@@ -51,8 +51,8 @@ const SocialIcons = () => {
           href={config.developer.cvUrl}
           target="_blank"
           rel="noopener noreferrer"
-          download
-          title="Download Kiyuran Naidoo - CV 2026.pdf"
+          download="Kiyuran Naidoo - CV 2026 - ePortfolio.pdf"
+          title="Download Kiyuran Naidoo - CV 2026 - ePortfolio.pdf"
           data-cursor="disable"
         >
           <TbFileCv className="resume-icon" />

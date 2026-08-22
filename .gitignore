@@ -27,3 +27,9 @@ dist-ssr
 backup/
 .env
 redoxchess-engine/
+
+# Private CV source documents
+src/cv/
+
+# Ensure public CV asset is tracked
+!public/Kiyuran Naidoo - CV 2026 - ePortfolio.pdf

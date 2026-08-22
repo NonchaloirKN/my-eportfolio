@@ -102,7 +102,7 @@ const WhatIDo = ({ setActiveSkillFilter }: WhatIDoProps) => {
                   setActiveSkillFilter?.('hardware');
                   document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="text-cyan-400 hover:text-cyan-300 underline underline-offset-4 font-semibold mt-2 block transition-colors cursor-pointer"
+                className="what-explore-btn text-cyan-400 hover:text-cyan-300 font-semibold cursor-pointer"
                 data-cursor="disable"
               >
                 Explore Skillset &amp; Tools &#10140;
@@ -145,7 +145,7 @@ const WhatIDo = ({ setActiveSkillFilter }: WhatIDoProps) => {
                   setActiveSkillFilter?.('software');
                   document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="text-cyan-400 hover:text-cyan-300 underline underline-offset-4 font-semibold mt-2 block transition-colors cursor-pointer"
+                className="what-explore-btn text-cyan-400 hover:text-cyan-300 font-semibold cursor-pointer"
                 data-cursor="disable"
               >
                 Explore Skillset &amp; Tools &#10140;

@@ -40,8 +40,51 @@ const setCharacter = (
               mesh.castShadow = false;
               mesh.receiveShadow = false;
               mesh.frustumCulled = false;
+
               if (mesh.material && !Array.isArray(mesh.material)) {
-                (mesh.material as THREE.ShaderMaterial).precision = "mediump";
+                const material = mesh.material as THREE.MeshStandardMaterial;
+
+                // Clone materials to prevent shared reference bugs across parts
+                mesh.material = material.clone();
+                const newMat = mesh.material as THREE.MeshStandardMaterial;
+                newMat.precision = "mediump";
+
+                const nodeName = (child.name || "").toLowerCase();
+                const matName = (newMat.name || "").toLowerCase();
+
+                // Personalise shirt with iconic UCT Blue
+                if (
+                  nodeName.includes("shirt") ||
+                  nodeName.includes("top") ||
+                  matName.includes("shirt") ||
+                  matName.includes("top")
+                ) {
+                  newMat.color.setHex(0x005596); // UCT Blue
+                }
+                // Personalise pants / jacket / hoodie with Deep Slate
+                else if (
+                  nodeName.includes("pant") ||
+                  nodeName.includes("jacket") ||
+                  nodeName.includes("hoodie") ||
+                  matName.includes("pant") ||
+                  matName.includes("jacket")
+                ) {
+                  newMat.color.setHex(0x0f172a); // Slate Black
+                }
+                // Personalise footwear & accessories with Electric Cyan Glow
+                else if (
+                  nodeName.includes("shoe") ||
+                  nodeName.includes("sole") ||
+                  nodeName.includes("headphone") ||
+                  matName.includes("shoe")
+                ) {
+                  newMat.emissive.setHex(0x00e5ff); // Cyan Glow
+                  newMat.emissiveIntensity = 0.8;
+                }
+
+                // Enhance skin and overall material rendering
+                newMat.roughness = 0.4;
+                newMat.metalness = 0.2;
               }
             }
           });

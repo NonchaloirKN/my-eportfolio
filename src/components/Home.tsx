@@ -9,10 +9,18 @@ import Artefacts from "./Artefacts";
 import CallToAction from "./CallToAction";
 import setSplitText from "./utils/splitText";
 
+import { lenis } from "./Navbar";
+
 const Home = () => {
   const [activeSkillFilter, setActiveSkillFilter] = useState<string | null>(null);
 
   useEffect(() => {
+    // Reset scroll to landing hero section at the top of the page
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    }
+
     const resizeHandler = () => {
       setSplitText();
     };

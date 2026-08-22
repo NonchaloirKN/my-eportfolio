@@ -17,8 +17,11 @@ const CallToAction = () => {
         </a>
 
         <Link to="/play" className="cta-btn cta-btn-play" data-cursor="disable">
-          <MdGamepad className="cta-btn-icon" />
-          Play With Me &rarr;
+          <span className="cta-play-shimmer"></span>
+          <span className="cta-play-glow-aura"></span>
+          <MdGamepad className="cta-btn-icon cta-gamepad-anim" />
+          <span className="cta-btn-play-text">Play With Me &rarr;</span>
+          <span className="cta-sparkle-dot"></span>
         </Link>
       </div>
     </div>

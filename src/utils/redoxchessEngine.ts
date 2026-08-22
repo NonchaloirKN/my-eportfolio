@@ -9,7 +9,10 @@ class RedoxChessEngine {
 
   async init() {
     return new Promise<void>((resolve) => {
-      this.engine = new Worker('/redoxchess.js');
+      const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+        ? import.meta.env.BASE_URL
+        : `${import.meta.env.BASE_URL}/`;
+      this.engine = new Worker(`${baseUrl}redoxchess.js`);
 
       this.engine.onmessage = (event) => {
         const message = event.data;

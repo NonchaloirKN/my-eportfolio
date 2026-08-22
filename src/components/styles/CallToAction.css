@@ -61,17 +61,106 @@
   transform: translateY(-3px);
 }
 
+/* Glistening & Pulsing Play With Me Button */
 .cta-btn-play {
-  background: rgba(255, 255, 255, 0.04);
-  color: #cbd5e1;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  position: relative;
+  background: linear-gradient(135deg, rgba(0, 85, 150, 0.9) 0%, rgba(0, 229, 255, 0.4) 45%, rgba(124, 58, 237, 0.85) 100%);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.8px;
+  border: 1.5px solid rgba(0, 229, 255, 0.85);
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.5), 0 0 50px rgba(124, 58, 237, 0.3), inset 0 0 15px rgba(0, 229, 255, 0.25);
+  border-radius: 12px;
+  padding: 15px 32px;
+  overflow: hidden;
+  animation: ctaAuraPulse 3s infinite ease-in-out;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
 }
 
 .cta-btn-play:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, #005596 0%, #00e5ff 50%, #7c3aed 100%);
+  color: #ffffff !important;
+  border-color: #00e5ff;
+  box-shadow: 0 0 35px rgba(0, 229, 255, 0.85), 0 0 70px rgba(124, 58, 237, 0.6), inset 0 0 20px rgba(0, 229, 255, 0.4);
+  transform: translateY(-4px) scale(1.04);
+}
+
+/* Pulsing Aura Keyframes */
+@keyframes ctaAuraPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.45), 0 0 40px rgba(124, 58, 237, 0.25), inset 0 0 12px rgba(0, 229, 255, 0.2);
+    border-color: rgba(0, 229, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(0, 229, 255, 0.8), 0 0 65px rgba(124, 58, 237, 0.5), inset 0 0 20px rgba(0, 229, 255, 0.4);
+    border-color: #00e5ff;
+  }
+}
+
+/* Glistening Light Sweep */
+.cta-play-shimmer {
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 20%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(0, 229, 255, 0.4) 70%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  animation: shimmerSweep 3.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes shimmerSweep {
+  0% {
+    left: -120%;
+  }
+  40%, 100% {
+    left: 180%;
+  }
+}
+
+/* Gamepad Icon Animation */
+.cta-gamepad-anim {
+  font-size: 20px;
+  color: #00e5ff;
+  filter: drop-shadow(0 0 8px #00e5ff);
+  transition: transform 0.3s ease;
+}
+
+.cta-btn-play:hover .cta-gamepad-anim {
+  transform: rotate(-12deg) scale(1.2);
   color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-3px);
+}
+
+.cta-sparkle-dot {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00e5ff;
+  box-shadow: 0 0 8px #00e5ff, 0 0 14px #ffffff;
+  animation: sparklePing 2s infinite ease-in-out;
+}
+
+@keyframes sparklePing {
+  0%, 100% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
 }
 
 /* Responsive */

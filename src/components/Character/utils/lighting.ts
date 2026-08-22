@@ -2,15 +2,26 @@ import * as THREE from "three";
 import { gsap } from "gsap";
 
 const setLighting = (scene: THREE.Scene) => {
-  // Ambient fill light: Deep Slate (#0f172a) to bring out shadows beautifully
+  // =========================================================================
+  // 💡 3D SCENE LIGHTING CUSTOMISATION PLAYGROUND
+  // =========================================================================
+  // You can adjust intensities, positions, and hex colours below:
+  //
+  // 1. AMBIENT FILL LIGHT:
+  //    - Soft baseline illumination for shadows across the entire model.
+  //    - `0x0f172a` (Deep Slate) provides a cinematic mood without washing out dark tones.
   const ambientLight = new THREE.AmbientLight(0x0f172a, 1.5);
   scene.add(ambientLight);
 
-  // Subtle hemisphere lighting: Electric Cyan sky / Deep Navy ground
+  // 2. HEMISPHERE SKY/GROUND LIGHT:
+  //    - Sky color (top): 0x00e5ff (Electric Cyan)
+  //    - Ground color (bottom): 0x061325 (Deep Navy)
   const hemiLight = new THREE.HemisphereLight(0x00e5ff, 0x061325, 0.6);
   scene.add(hemiLight);
 
-  // Key directional light: Crisp white (0xffffff), strong cinematic key light
+  // 3. KEY DIRECTIONAL LIGHT:
+  //    - Main crisp white key light from front-top-right casting shadows onto the avatar.
+  //    - Adjust `intensity` (e.g. 2.0 to 3.5) and `position.set(x, y, z)`.
   const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5);
   directionalLight.position.set(0, 6, 8);
   directionalLight.castShadow = true;
@@ -20,17 +31,21 @@ const setLighting = (scene: THREE.Scene) => {
   directionalLight.shadow.camera.far = 50;
   scene.add(directionalLight);
 
-  // Strong PointLight directly behind the character for vibrant Electric Cyan rim-light / halo effect
+  // 4. BACK RIM POINT LIGHT (Halo Edge Effect):
+  //    - Located behind the avatar (`0, 2, -3`) with Electric Cyan (`0x00e5ff`).
+  //    - Creates an edge highlight that silhouettes the character against the dark background.
   const backRimPointLight = new THREE.PointLight(0x00e5ff, 4.0, 15, 1.8);
   backRimPointLight.position.set(0, 2, -3);
   scene.add(backRimPointLight);
 
-  // Electric cyan rim directional backlight
+  // 5. DIRECTIONAL BACKLIGHT:
+  //    - Left-angled rim backlight to sculpt the shoulder and head geometry.
   const rimLight = new THREE.DirectionalLight(0x00e5ff, 0.8);
   rimLight.position.set(-3, 2, -4);
   scene.add(rimLight);
 
-  // Laptop/screen fill light
+  // 6. LAPTOP / SCREEN EMISSION FILL LIGHT:
+  //    - Simulates the interactive laptop screen projecting light up at the avatar.
   const pointLight = new THREE.PointLight(0x00e5ff, 0.8, 30, 2);
   pointLight.position.set(3, 12, 4);
   pointLight.castShadow = true;

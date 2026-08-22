@@ -1,6 +1,29 @@
 import * as THREE from "three";
 import gsap from "gsap";
 
+// =========================================================================
+// 🚀 GSAP SCROLL & 3D CAMERA TIMELINE PLAYGROUND
+// =========================================================================
+// This file synchronises page scroll positions with 3D camera movements,
+// character rotations, and skeletal bone gestures:
+//
+// 1. TIMELINES & TRIGGER SECTIONS:
+//    - `tl1` (Landing -> About):
+//      * Character rotates (`character.rotation.y = 0.7`) and shifts left (`x: "-25%"`).
+//      * Camera pulls slightly back (`camera.position.z = 22`).
+//    - `tl2` (About -> What I Do):
+//      * Camera zooms into third-person over-the-shoulder view (`camera.position.set(..., y: 8.4, z: 75)`).
+//      * Character tilts head down towards the laptop keyboard (`neckBone.rotation.x = 0.6`).
+//      * Laptop screen glows and animates into view (`monitor` + `screenLight`).
+//    - `tl3` (What I Do):
+//      * Camera shifts smoothly to focus on technical skillset matrices.
+//
+// 2. HOW TO TWEAK CAMERA ANGLES:
+//    - `camera.position.set(x, y, z)`: Modify x (left/right), y (elevation), z (zoom distance).
+//    - `character.rotation.set(x, y, z)`: Adjust avatar orientation at any scroll point.
+//    - `neckBone.rotation.set(x, y, z)`: Pose the head (e.g. looking at visitor vs looking at laptop).
+// =========================================================================
+
 export function setCharTimeline(
   character: THREE.Object3D<THREE.Object3DEventMap> | null,
   camera: THREE.PerspectiveCamera

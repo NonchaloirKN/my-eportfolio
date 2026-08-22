@@ -40,7 +40,7 @@ export const config = {
     github: "https://github.com/NonchaloirKN",
     linkedin: "https://www.linkedin.com/in/kiyuran-naidoo-b12301354",
     email: "kiyuran.naidoo@gmail.com",
-    academicEmail: "NDXKIY001@myuct.ac.za",
+    academicEmail: "NDXKIY004@myuct.ac.za",
     location: "Cape Town / Durban, South Africa"
   },
   navLinks,
@@ -56,7 +56,7 @@ export const config = {
       position: "Electrical/Software Engineering Intern",
       company: "Maxwell+Spark (Pty) Ltd",
       period: "Dec 2025 - Feb 2026",
-      location: "Cape Town, South Africa",
+      location: "Durban, South Africa",
       nodeType: "hardware" as const,
       description:
         "Architected full-stack dataset capture & YOLO training platform with SignalR WebSockets and browser onnxruntime-web inference. Researched STM32N6 Neural-ART NPU architecture, OS shell in C/C++, and built 48V PCB / ISP flasher systems.",
@@ -215,7 +215,7 @@ export const config = {
   ],
   contact: {
     email: "kiyuran.naidoo@gmail.com",
-    academicEmail: "NDXKIY001@myuct.ac.za",
+    academicEmail: "NDXKIY004@myuct.ac.za",
     github: "https://github.com/NonchaloirKN",
     linkedin: "https://www.linkedin.com/in/kiyuran-naidoo-b12301354",
     location: "Cape Town / Durban, South Africa",

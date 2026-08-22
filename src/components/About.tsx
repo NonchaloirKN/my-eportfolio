@@ -26,7 +26,7 @@ const About = () => {
           </div>
           <div className="about-pill">
             <MdSchool className="about-pill-icon" />
-            <span>Dean's Merit List &bull; Schneider Scholar</span>
+            <span>Dean's Merit List &bull; Schneider Electric Scholar</span>
           </div>
         </div>
       </div>

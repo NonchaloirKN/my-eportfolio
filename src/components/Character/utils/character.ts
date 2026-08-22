@@ -44,6 +44,36 @@ const setCharacter = (
               if (mesh.material && !Array.isArray(mesh.material)) {
                 const material = mesh.material as THREE.MeshStandardMaterial;
 
+                // =========================================================================
+                // 🎨 3D AVATAR APPEARANCE CUSTOMISATION PLAYGROUND
+                // =========================================================================
+                // You can modify any material property on the character's meshes below:
+                // 
+                // 1. CLOTHING & TEXTURE COLOURS:
+                //    - Change `newMat.color.setHex(0xHEXCODE)` to any RGB hex value.
+                //    - Examples:
+                //      * UCT Royal Blue:  0x005596
+                //      * Electric Cyan:   0x00e5ff
+                //      * Emerald Green:   0x10b981
+                //      * Cyberpunk Purple:0x8b5cf6
+                //      * Slate Charcoal:  0x0f172a
+                //      * Pure White:      0xffffff
+                //
+                // 2. EMISSIVE GLOW EFFECTS (Shoes, Headphones, Neon Accents):
+                //    - `newMat.emissive.setHex(0x00e5ff)` -> sets glow color
+                //    - `newMat.emissiveIntensity = 0.8`   -> adjust brightness (0.0 to 3.0+)
+                //
+                // 3. SURFACE FINISH / SHADER PROPERTIES:
+                //    - `newMat.roughness = 0.4` -> 0.0 (mirror-like glossy) to 1.0 (matte fabric)
+                //    - `newMat.metalness = 0.2` -> 0.0 (dielectric cloth/skin) to 1.0 (metallic armor)
+                //    - `newMat.wireframe = true`-> enable wireframe mode for a holographic effect!
+                //    - `newMat.opacity = 0.8`   -> set transparency (requires `newMat.transparent = true`)
+                //
+                // 4. IDENTIFYING MESH NAMES:
+                //    - `child.name` contains GLTF node names (e.g. "Wolf3D_Avatar", "Wolf3D_Outfit_Top",
+                //      "Wolf3D_Outfit_Bottom", "Wolf3D_Outfit_Footwear", "Wolf3D_Headwear", "Wolf3D_Body")
+                // =========================================================================
+
                 // Clone materials to prevent shared reference bugs across parts
                 mesh.material = material.clone();
                 const newMat = mesh.material as THREE.MeshStandardMaterial;
@@ -52,16 +82,16 @@ const setCharacter = (
                 const nodeName = (child.name || "").toLowerCase();
                 const matName = (newMat.name || "").toLowerCase();
 
-                // Personalise shirt with iconic UCT Blue
+                // 👕 Upper Body / Shirt / Top:
                 if (
                   nodeName.includes("shirt") ||
                   nodeName.includes("top") ||
                   matName.includes("shirt") ||
                   matName.includes("top")
                 ) {
-                  newMat.color.setHex(0x005596); // UCT Blue
+                  newMat.color.setHex(0x005596); // UCT Blue (Change here!)
                 }
-                // Personalise pants / jacket / hoodie with Deep Slate
+                // 👖 Lower Body / Pants / Jacket:
                 else if (
                   nodeName.includes("pant") ||
                   nodeName.includes("jacket") ||
@@ -69,20 +99,20 @@ const setCharacter = (
                   matName.includes("pant") ||
                   matName.includes("jacket")
                 ) {
-                  newMat.color.setHex(0x0f172a); // Slate Black
+                  newMat.color.setHex(0x0f172a); // Slate Black (Change here!)
                 }
-                // Personalise footwear & accessories with Electric Cyan Glow
+                // 👟 Footwear / Accessories / Glow Accents:
                 else if (
                   nodeName.includes("shoe") ||
                   nodeName.includes("sole") ||
                   nodeName.includes("headphone") ||
                   matName.includes("shoe")
                 ) {
-                  newMat.emissive.setHex(0x00e5ff); // Cyan Glow
+                  newMat.emissive.setHex(0x00e5ff); // Electric Cyan Glow (Change here!)
                   newMat.emissiveIntensity = 0.8;
                 }
 
-                // Enhance skin and overall material rendering
+                // 🌟 Material Surface Tuning:
                 newMat.roughness = 0.4;
                 newMat.metalness = 0.2;
               }

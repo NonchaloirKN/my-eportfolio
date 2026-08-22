@@ -154,11 +154,7 @@ const Navbar = () => {
                       setActiveSection(item.id);
                       scrollToSection(e, item.href);
                     }}
-                    className={`transition-all duration-300 cursor-pointer ${
-                      isActive
-                        ? "text-cyan-400 font-bold scale-110 border-b-2 border-cyan-400 pb-1"
-                        : "text-gray-300 font-normal hover:text-cyan-200"
-                    }`}
+                    className={`nav-link-anchor ${isActive ? "active" : ""}`}
                   >
                     {item.title}
                   </a>

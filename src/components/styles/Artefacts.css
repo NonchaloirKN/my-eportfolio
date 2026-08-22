@@ -1071,33 +1071,45 @@
   animation: cloudStream 1.8s linear infinite;
 }
 
-/* 4. Micromouse Animated Maze Traversal */
+/* 4. Micromouse Animated Maze Traversal (6x4 24-Cell Grid) */
 @keyframes micromouseTraverse {
-  0% {
+  0%, 4% {
     transform: translate(0px, 0px);
   }
-  16% {
-    transform: translate(44px, 0px);
+  10%, 13% {
+    transform: translate(36px, 0px);
   }
-  33% {
-    transform: translate(44px, 44px);
+  19%, 22% {
+    transform: translate(36px, 36px);
   }
-  50% {
-    transform: translate(88px, 44px);
+  28%, 31% {
+    transform: translate(72px, 36px);
   }
-  66% {
-    transform: translate(88px, 88px);
+  37%, 40% {
+    transform: translate(72px, 72px);
   }
-  83% {
-    transform: translate(132px, 88px);
+  46%, 49% {
+    transform: translate(108px, 72px);
   }
-  100% {
-    transform: translate(132px, 132px);
+  55%, 58% {
+    transform: translate(108px, 36px);
+  }
+  64%, 67% {
+    transform: translate(144px, 36px);
+  }
+  73%, 76% {
+    transform: translate(144px, 72px);
+  }
+  82%, 85% {
+    transform: translate(144px, 108px);
+  }
+  94%, 100% {
+    transform: translate(180px, 108px);
   }
 }
 
 .animate-micromouse {
-  animation: micromouseTraverse 4.5s ease-in-out infinite alternate;
+  animation: micromouseTraverse 6.5s ease-in-out infinite alternate;
 }
 
 /* 5. Antarctic Probe Frost & Telemetry */

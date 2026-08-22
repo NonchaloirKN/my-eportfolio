@@ -174,45 +174,52 @@ const UmNyangoCloudVisual = () => (
   </div>
 );
 
-// 4. Micromouse Animated Maze Traversal
+// 4. Micromouse Animated Maze Traversal (6x4 24-cell grid)
 const MicromouseMazeVisual = () => (
-  <div className="relative w-full h-48 bg-slate-950/85 rounded-xl border border-cyan-500/30 overflow-hidden my-4 p-3 shadow-inner flex flex-col items-center justify-center">
-    {/* Maze Grid (4x4) */}
-    <div className="relative grid grid-cols-4 gap-1.5 p-2 bg-slate-900/90 border border-slate-700/80 rounded-xl shadow-2xl">
+  <div className="relative w-full h-56 bg-slate-950/85 rounded-xl border border-cyan-500/30 overflow-hidden my-4 p-3 shadow-inner flex flex-col items-center justify-center">
+    {/* Maze Grid (6x4 = 24 Cells) */}
+    <div className="relative grid grid-cols-6 gap-1 p-2 bg-slate-900/90 border border-slate-700/80 rounded-xl shadow-2xl">
       {/* Animated Micromouse Bot */}
-      <div className="absolute top-2 left-2 w-8 h-8 rounded-lg bg-emerald-500/40 border-2 border-emerald-400 shadow-[0_0_15px_#10b981] flex items-center justify-center text-emerald-200 z-20 animate-micromouse pointer-events-none">
+      <div className="absolute top-2 left-2 w-8 h-8 rounded bg-emerald-500/40 border-2 border-emerald-400 shadow-[0_0_15px_#10b981] flex items-center justify-center text-emerald-200 z-20 animate-micromouse pointer-events-none">
         <TbCpu className="text-sm" />
       </div>
 
-      {/* 16 Maze Cells */}
-      {/* Row 0 */}
+      {/* Row 0 (Cols 0 to 5) */}
       <div className="w-8 h-8 rounded bg-cyan-950/60 border border-cyan-400/40 flex items-center justify-center text-[9px] font-mono font-bold text-cyan-300">S</div>
       <div className="w-8 h-8 rounded bg-cyan-950/30 border border-cyan-500/20"></div>
-      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
-      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800/80 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800/80 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800/80 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800/80 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
 
-      {/* Row 1 */}
-      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      {/* Row 1 (Cols 0 to 5) */}
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800/80 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
       <div className="w-8 h-8 rounded bg-cyan-950/30 border border-cyan-500/20"></div>
       <div className="w-8 h-8 rounded bg-cyan-950/30 border border-cyan-500/20"></div>
-      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      <div className="w-8 h-8 rounded bg-cyan-950/30 border border-cyan-500/20"></div>
+      <div className="w-8 h-8 rounded bg-cyan-950/30 border border-cyan-500/20"></div>
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800/80 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
 
-      {/* Row 2 */}
-      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
-      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      {/* Row 2 (Cols 0 to 5) */}
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800/80 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800/80 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
       <div className="w-8 h-8 rounded bg-cyan-950/30 border border-cyan-500/20"></div>
       <div className="w-8 h-8 rounded bg-cyan-950/30 border border-cyan-500/20"></div>
+      <div className="w-8 h-8 rounded bg-cyan-950/30 border border-cyan-500/20"></div>
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800/80 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
 
-      {/* Row 3 */}
-      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
-      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
-      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
-      <div className="w-8 h-8 rounded bg-emerald-950/80 border-2 border-emerald-400 shadow-[0_0_10px_#10b981] flex items-center justify-center text-[9px] font-mono font-bold text-emerald-300">G</div>
+      {/* Row 3 (Cols 0 to 5) */}
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800/80 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800/80 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800/80 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      <div className="w-8 h-8 rounded bg-slate-950 border border-slate-800/80 flex items-center justify-center text-[9px] text-slate-700">&#x2715;</div>
+      <div className="w-8 h-8 rounded bg-cyan-950/30 border border-cyan-500/20"></div>
+      <div className="w-8 h-8 rounded bg-emerald-950/80 border-2 border-emerald-400 shadow-[0_0_12px_#10b981] flex items-center justify-center text-[9px] font-mono font-bold text-emerald-300">G</div>
     </div>
 
     <div className="mt-2 text-[10px] font-mono text-cyan-300 flex items-center gap-2">
       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-      <span>FLOODFILL SOLVER &bull; TRAVERSING 24-CELL MAZE</span>
+      <span>FLOODFILL SOLVER &bull; AUTONOMOUS 6x4 (24-CELL) MAZE</span>
     </div>
   </div>
 );
@@ -552,7 +559,7 @@ const Artefacts = () => {
                       <TbCloudComputing className="text-sm" /> Cloud Architecture &bull; Voice AI Triage
                     </span>
                     <h4 className="text-2xl font-bold text-white tracking-tight">UmNyango Health Services (AWS Cloud)</h4>
-                    <p className="text-xs text-slate-400 mt-1">Standard Bank UniHack 2026 Winner &bull; Serverless Infrastructure</p>
+                    <p className="text-xs text-slate-400 mt-1">Standard Bank UniHack 2026 &bull; Serverless Infrastructure</p>
                   </div>
                   <a
                     href="https://github.com/maarijbhai/Standard-Bank-UniHack-2026"

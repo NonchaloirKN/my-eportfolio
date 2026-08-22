@@ -1,6 +1,21 @@
-import * as THREE from "three";
-import { GLTF } from "three-stdlib";
-import { eyebrowBoneNames, typingBoneNames } from "../../../data/boneData";
+// =========================================================================
+// 🎬 3D AVATAR SKELETAL ANIMATION PLAYGROUND
+// =========================================================================
+// This module orchestrates Three.js AnimationMixer actions, skeletal clips,
+// and real-time user-driven interactions:
+//
+// 1. EMBEDDED CLIPS IN GLB:
+//    - `introAnimation`: Landing page welcome sequence.
+//    - `typing`: Skeletal hand/finger movement over the keyboard.
+//    - `key1`, `key2`, `key5`, `key6`: Individual keypress animations.
+//    - `Blink`: Automatic procedural eyelid blinks.
+//    - `browup`: Responsive facial expression triggered on mouse hover.
+//
+// 2. ADJUSTING ANIMATION SPEED & INTENSITY:
+//    - `action.timeScale = 1.2` (Speed multiplier: 1.0 = normal, 1.5 = fast, 0.5 = slow-mo).
+//    - `action.setEffectiveWeight(w)` (Blend weight: 0.0 to 1.0+ for subtle vs pronounced motion).
+//    - `action.fadeIn(duration)` / `action.fadeOut(duration)` for smooth cross-fading.
+// =========================================================================
 
 const setAnimations = (gltf: GLTF) => {
   let character = gltf.scene;

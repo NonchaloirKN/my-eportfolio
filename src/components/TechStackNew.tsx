@@ -108,12 +108,27 @@ const skillCategories: SkillCategory[] = [
   },
 ];
 
-const TechStackNew = () => {
-  const [activeFilter, setActiveFilter] = useState<string>("all");
+interface TechStackProps {
+  activeSkillFilter?: string | null;
+  setActiveSkillFilter?: (filter: string | null) => void;
+}
 
-  const filteredCategories = activeFilter === "all"
-    ? skillCategories
-    : skillCategories.filter((cat) => cat.id === activeFilter);
+const TechStackNew = ({
+  activeSkillFilter = null,
+  setActiveSkillFilter,
+}: TechStackProps) => {
+  const [localFilter, setLocalFilter] = useState<string>("all");
+
+  let filteredCategories = skillCategories;
+  if (activeSkillFilter === "software") {
+    filteredCategories = skillCategories.filter(
+      (cat) => cat.id === "software" || cat.id === "ml-vision"
+    );
+  } else if (activeSkillFilter === "hardware") {
+    filteredCategories = skillCategories.filter((cat) => cat.id === "hardware");
+  } else if (localFilter !== "all") {
+    filteredCategories = skillCategories.filter((cat) => cat.id === localFilter);
+  }
 
   return (
     <section className="techstack-new" id="skills">
@@ -136,27 +151,60 @@ const TechStackNew = () => {
             A structured matrix of my technical capabilities spanning hardware design, low-level firmware, machine learning pipelines, and full-stack software systems.
           </p>
 
+          {/* Dynamic Active Filter Badge & Reset Button */}
+          {activeSkillFilter && (
+            <div className="flex flex-wrap items-center justify-center gap-3 my-4 animate-fade-in">
+              <span className="text-xs text-cyan-300 font-mono bg-cyan-950/70 border border-cyan-500/40 px-3.5 py-1.5 rounded-full shadow-[0_0_15px_rgba(0,229,255,0.15)]">
+                Active Filter: <strong className="text-white uppercase tracking-wider">{activeSkillFilter === "software" ? "AI & Software Systems" : "Embedded & Hardware"}</strong>
+              </span>
+              <button
+                onClick={() => {
+                  setActiveSkillFilter?.(null);
+                  setLocalFilter("all");
+                }}
+                className="px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-slate-900/90 border border-cyan-400/50 rounded-full hover:bg-cyan-500/20 hover:scale-105 transition-all shadow-[0_0_12px_rgba(0,229,255,0.25)] cursor-pointer"
+                data-cursor="disable"
+              >
+                Show All Skills &#x2715;
+              </button>
+            </div>
+          )}
+
           {/* Interactive Category Filter Pills */}
           <div className="skills-filter-bar">
             <button
-              className={`filter-tab ${activeFilter === "all" ? "filter-active" : ""}`}
-              onClick={() => setActiveFilter("all")}
+              className={`filter-tab ${!activeSkillFilter && localFilter === "all" ? "filter-active" : ""}`}
+              onClick={() => {
+                setActiveSkillFilter?.(null);
+                setLocalFilter("all");
+              }}
               data-cursor="disable"
             >
               <MdOutlineLayers className="tab-icon" />
               All Competencies ({skillCategories.reduce((acc, cat) => acc + cat.skills.length, 0)})
             </button>
 
-            {skillCategories.map((cat) => (
-              <button
-                key={cat.id}
-                className={`filter-tab ${activeFilter === cat.id ? "filter-active" : ""}`}
-                onClick={() => setActiveFilter(cat.id)}
-                data-cursor="disable"
-              >
-                {cat.category}
-              </button>
-            ))}
+            {skillCategories.map((cat) => {
+              const isTabActive =
+                activeSkillFilter
+                  ? (activeSkillFilter === "software" && (cat.id === "software" || cat.id === "ml-vision")) ||
+                    (activeSkillFilter === "hardware" && cat.id === "hardware")
+                  : localFilter === cat.id;
+
+              return (
+                <button
+                  key={cat.id}
+                  className={`filter-tab ${isTabActive ? "filter-active" : ""}`}
+                  onClick={() => {
+                    setActiveSkillFilter?.(null);
+                    setLocalFilter(cat.id);
+                  }}
+                  data-cursor="disable"
+                >
+                  {cat.category}
+                </button>
+              );
+            })}
           </div>
         </div>
 

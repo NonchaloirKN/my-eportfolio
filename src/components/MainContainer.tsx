@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import About from "./About";
 import Career from "./Career";
 import Contact from "./Contact";
@@ -10,6 +10,8 @@ import CallToAction from "./CallToAction";
 import setSplitText from "./utils/splitText";
 
 const MainContainer = () => {
+  const [activeSkillFilter, setActiveSkillFilter] = useState<string | null>(null);
+
   useEffect(() => {
     const resizeHandler = () => {
       setSplitText();
@@ -26,9 +28,12 @@ const MainContainer = () => {
       <div className="container-main">
         <Landing />
         <About />
-        <WhatIDo />
+        <WhatIDo setActiveSkillFilter={setActiveSkillFilter} />
         <Career />
-        <TechStackNew />
+        <TechStackNew
+          activeSkillFilter={activeSkillFilter}
+          setActiveSkillFilter={setActiveSkillFilter}
+        />
         <Artefacts />
         <CallToAction />
         <Contact />

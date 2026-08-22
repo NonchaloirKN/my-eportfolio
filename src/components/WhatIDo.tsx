@@ -3,7 +3,11 @@ import "./styles/WhatIDo.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { config } from "../config";
 
-const WhatIDo = () => {
+interface WhatIDoProps {
+  setActiveSkillFilter?: (filter: string | null) => void;
+}
+
+const WhatIDo = ({ setActiveSkillFilter }: WhatIDoProps) => {
   const containerRef = useRef<(HTMLDivElement | null)[]>([]);
   const setRef = (el: HTMLDivElement | null, index: number) => {
     containerRef.current[index] = el;
@@ -93,6 +97,16 @@ const WhatIDo = () => {
               <p>
                 {config.skills.embedded.details}
               </p>
+              <button
+                onClick={() => {
+                  setActiveSkillFilter?.('hardware');
+                  document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="text-cyan-400 hover:text-cyan-300 underline underline-offset-4 font-semibold mt-2 block transition-colors cursor-pointer"
+                data-cursor="disable"
+              >
+                Explore Skillset &amp; Tools &#10140;
+              </button>
               <h5>Skillset &amp; tools</h5>
               <div className="what-content-flex">
                 {config.skills.embedded.tools.map((tool, index) => (
@@ -126,6 +140,16 @@ const WhatIDo = () => {
               <p>
                 {config.skills.softwareAI.details}
               </p>
+              <button
+                onClick={() => {
+                  setActiveSkillFilter?.('software');
+                  document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="text-cyan-400 hover:text-cyan-300 underline underline-offset-4 font-semibold mt-2 block transition-colors cursor-pointer"
+                data-cursor="disable"
+              >
+                Explore Skillset &amp; Tools &#10140;
+              </button>
               <h5>Skillset &amp; tools</h5>
               <div className="what-content-flex">
                 {config.skills.softwareAI.tools.map((tool, index) => (
